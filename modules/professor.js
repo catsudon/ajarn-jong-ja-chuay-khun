@@ -27,7 +27,7 @@ const createProfessor = (quote) => {
     figure.style.position = 'fixed';
     figure.style.left = '0px';
     figure.style.bottom = '0px';
-    figure.style.zIndex = 68;
+    figure.style.zIndex = 6968;
     figure.style.padding = '50px';
     figure.style.opacity = 1;
     figure.style.height = "auto";
@@ -41,7 +41,7 @@ const createProfessor = (quote) => {
     div.classList.add("ajarn-jong-ja-chuay-khun");
     div.style.left = '0px';
     div.style.bottom = '0px';
-    div.style.zIndex = 69;
+    div.style.zIndex = 6969;
     div.style.padding = '50px';
     div.appendChild(h1);
 
