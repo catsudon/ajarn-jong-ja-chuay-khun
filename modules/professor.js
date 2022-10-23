@@ -9,6 +9,11 @@ const removeProfessor = () => {
 
 }
 
+const getQuote1 = () => {
+    n = Math.floor(Math.random() * quote1.length);
+    return quote1[n]
+}
+
 const createProfessor = (quote) => {
 
     let bigDiv = document.createElement('div');
@@ -16,7 +21,7 @@ const createProfessor = (quote) => {
     let figure = document.createElement('img');
     let h1 = document.createElement('H1');
 
-    h1.innerText = "พยายามเข้านิสิต\nความฝันอยู่อีกไม่ไกล"
+    h1.innerText = getQuote1();
     h1.width = "400px";
     h1.style.color = '#c9c91c';
     h1.style['font-size'] = '30px';
