@@ -21,8 +21,5 @@
         "default_icon": "img/temporary_icon.png",
 
         "default_title": "a popup will come here."
-    },
-    "chrome_url_overrides": {
-        "newtab": "html/index.html"
     }
 }
