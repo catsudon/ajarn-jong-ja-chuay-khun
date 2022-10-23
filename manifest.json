@@ -10,7 +10,7 @@
             "matches": [
                 "<all_urls>"
             ],
-            "js": ["modules/storage.js", "modules/professor.js", "main.js"]
+            "js": ["quote.js", "modules/storage.js", "modules/professor.js", "main.js"]
         }
     ],
     
