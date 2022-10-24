@@ -44,7 +44,7 @@ const createProfessor = (quote) => {
     h1.classList.add("ajarn-jong-ja-chuay-khun");
 
     // change this to random
-    figure['src'] = professors[Math.floor(Math.random() * professors.length)]['imgUrl'];
+    figure['src'] = chrome.extension.getURL(professors[Math.floor(Math.random() * professors.length)]['imgPath']);
     figure.style['height'] = '269px';
     figure.classList.add("ajarn-jong-ja-chuay-khun");
 
