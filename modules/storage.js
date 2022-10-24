@@ -1,9 +1,9 @@
 const setBond = (bonding) => {
     chrome.storage.sync.set({ bond: bonding }, function () {
         console.log('Value setted to ' + bonding);
-        return "bond setted to "+bonding;
+        return "bond setted to " + bonding;
     });
-    
+
 }
 
 const getBond = () => {
@@ -14,8 +14,15 @@ const getBond = () => {
     });
 }
 
-chrome.runtime.onInstalled.addListener(() => {
-    setBond(0)
-    chrome.storage.sync.set({ isNotBusy: false });
-})
+chrome.runtime.onInstalled.addListener((details) => {
+    if (details.reason == "install") {
+        setBond(0);
+        chrome.storage.sync.set({ isNotBusy: true });
+    }
+});
 
+// to toggle on/off
+// chrome.storage.sync.get("isNotBusy", function (result) {
+//     let isNotBusy = result.isNotBusy;
+//     chrome.storage.sync.set({ isNotBusy: !isNotBusy });
+// });

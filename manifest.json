@@ -10,12 +10,13 @@
             "matches": [
                 "<all_urls>"
             ],
-            "js": ["quote.js", "modules/storage.js", "modules/professor.js", "main.js"]
+            "js": ["data/professorList.js", "data/quote.js", "modules/storage.js", "modules/professor.js", "main.js"],
+            "css": ["html/styles.css"]
         }
     ],
     
     "background": {
-        "scripts": ["modules/storage.js", "background.js"]
+        "scripts": ["data/professorList.js", "modules/storage.js", "background.js"]
     },
     "browser_action": {
         "default_icon": "img/temporary_icon.png",

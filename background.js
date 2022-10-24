@@ -14,7 +14,6 @@ const buttonClicked = (tab) => {
         };
         chrome.tabs.sendMessage(tab.id, msg);
     });
-    chrome.storage.sync.set({ isNotBusy: true });
 }
 
 chrome.browserAction.onClicked.addListener(buttonClicked);

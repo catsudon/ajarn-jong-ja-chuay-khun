@@ -1,0 +1,13 @@
+.ajarn-walks-in {
+  animation: mymove 1.5s;
+}
+
+@keyframes mymove {
+  from {right: 0px;}
+  to {right: 9%;}
+}
+
+@keyframes mynewmove {
+  from {top: 0px;}
+  to {top: 200px;}
+}
