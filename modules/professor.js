@@ -6,7 +6,13 @@ const removeProfessor = () => {
     chrome.storage.sync.get('bond', (data) => {
         setBond(data.bond + 1);
     });
+}
 
+const hideProfessor = () => {
+    const professor = document.getElementsByClassName('ajarn-jong-ja-chuay-khun');
+    for (elm of professor) {
+        if (elm) elm.remove();
+    }
 }
 
 const getQuote1 = () => {
@@ -19,8 +25,7 @@ const getQuote2 = () => {
     return quote2[n]
 }
 
-const createProfessor = (quote) => {
-
+const createProfessor = (quote) => { 
     let container = document.createElement('div');
     let figure = document.createElement('img');
     let h1 = document.createElement('H1');
@@ -38,7 +43,8 @@ const createProfessor = (quote) => {
     h1.style['-webkit-text-stroke'] = '1px black';
     h1.classList.add("ajarn-jong-ja-chuay-khun");
 
-    figure.src = professors[Math.floor(Math.random() * professors.length)]['imgUrl'];
+    // change this to random
+    figure['src'] = professors[Math.floor(Math.random() * professors.length)]['imgUrl'];
     figure.style['height'] = '269px';
     figure.classList.add("ajarn-jong-ja-chuay-khun");
 
@@ -48,10 +54,14 @@ const createProfessor = (quote) => {
     container.style['text-align'] = 'center';
     container.style['color'] = 'white';
     container.style['z-index'] = 6969;
+    container.classList.add("ajarn-jong-ja-chuay-khun");
+    container.classList.add("ajarn-walks-in");
     container.appendChild(figure);
     container.appendChild(h1);
 
     document.body.appendChild(container);
 
+    document.getElementsByClassName("ajarn-jong-ja-chuay-khun").onclick = hideProfessor;
     const timeOut = setTimeout(removeProfessor, 4569);
 }
+
