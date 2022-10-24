@@ -11,7 +11,7 @@
                 "<all_urls>"
             ],
             "js": ["data/professorList.js", "data/quote.js", "modules/storage.js", "modules/professor.js", "main.js"],
-            "css": ["html/styles.css"]
+            "css": ["html/popupStyles.css"]
         }
     ],
     
