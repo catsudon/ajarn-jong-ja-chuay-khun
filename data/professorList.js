@@ -1,4 +1,4 @@
-let professors = [
+var professors = [
     { imgPath: "img/professors/0.jpg", name: "Vishunu ", id: "0" },
     { imgPath: "img/professors/1.jpg", name: "Proadpran", id: "1" },
     { imgPath: "img/professors/2.jpg", name: "Nuttapong", id: "2" },
@@ -34,4 +34,4 @@ let professors = [
     { imgPath: "img/professors/32.jpg", name: "Nakornthip", id: "32" },
     { imgPath: "img/professors/33.jpg", name: "Athasit", id: "33" },
     { imgPath: "img/professors/34.jpg", name: "Arthit", id: "34" }
-]
+]; export { professors };
