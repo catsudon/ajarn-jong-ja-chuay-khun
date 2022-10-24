@@ -11,4 +11,4 @@ todo:
   - แสดงค่าbond
 - แก้ui
 - *ให้อาจารย์เตือนเวลาเข้าเว็บแปลกๆ*
-- remove every console.log()
+- remove every ```console.log()```
