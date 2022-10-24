@@ -35,3 +35,30 @@ let professors = [
     { imgPath: "/img/professors/33.jpg", name: "Athasit", id: "33" },
     { imgPath: "/img/professors/34.jpg", name: "Arthit", id: "34" }
 ]
+
+let app = document.getElementById("app");
+for(ajarn of professors) {
+    console.log(ajarn)
+    let container = document.createElement('div');
+    let picDiv = document.createElement('div');
+    let img = document.createElement('img');
+    let ajInfo = document.createElement('div');
+    let ajName = document.createElement('div');
+    
+    img.src = ajarn['imgPath']
+    img.alt = ajarn['name']
+    container.classList.add("ajarn");
+    picDiv.classList.add("pic-cont");
+    img.classList.add("aj-pic");
+    ajInfo.classList.add("aj-info");
+    ajName.classList.add("aj-name");
+
+    ajName.innerText = ajarn['name']
+
+    picDiv.appendChild(img)
+    ajInfo.appendChild(ajName)
+    container.appendChild(picDiv)
+    container.appendChild(ajInfo)
+    
+    app.appendChild(container);
+}
