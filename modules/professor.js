@@ -6,7 +6,7 @@ const removeProfessor = (now) => {
     chrome.storage.sync.get('bond', (data) => {
         setBond(data.bond + 1);
     });
-    chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
+    
 }
 
 const hideProfessor = () => {
@@ -32,10 +32,13 @@ const awakeProfessor = () => {
     chrome.storage.sync.get("lastPopUp", function (result) {
         let lastPopUp = result.lastPopUp;
         console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
-        if (now - lastPopUp < 60*60*1000) {
-            callProfessor = false;
+        if (now - lastPopUp < 3600000) callProfessor = false;
+        
+        if(callProfessor) {
+            chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
+            createProfessor();
+            setTimeout(removeProfessor, 4569);
         }
-        if(callProfessor) createProfessor();
         else console.log("not waking prof")
     });
 
@@ -79,6 +82,5 @@ const createProfessor = (quote) => {
     document.body.appendChild(container);
 
     // document.getElementsByClassName("ajarn-jong-ja-chuay-khun").onclick = hideProfessor;
-    const timeOut = setTimeout(removeProfessor, 4569);
 }
 
