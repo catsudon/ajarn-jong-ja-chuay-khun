@@ -1,26 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
-
-@font-face {
-  font-family: "Street-Fighter";
-  src: url(../fonts/sf.ttf);
-}
-
+@import url("http://fonts.cdnfonts.com/css/games");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Dosis, Monospace, sans-serif;
-}
-
-.heading {
-  font-family: "Street-Fighter";
-  color: #f12a07;
+  font-family: "Games", Dosis, Monospace, sans-serif;
 }
 
 body {
-  background: #fccccc;
-  /* background-image: radial-gradient(circle at top, #f4eba0, #f08080); */
-  background-image: #fccccc;
+  background: #f08080;
+  background-image: radial-gradient(circle at top, #dfd76a, #db6ebc);
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 100vh;
@@ -36,7 +25,7 @@ main {
 main > h1 {
   text-align: center;
   letter-spacing: 0.3rem;
-  color: #ea526f;
+  color: #f4f1f5;
   margin-bottom: 2rem;
   font-size: 4rem;
   animation-name: title;
@@ -55,7 +44,7 @@ main > h1 {
   }
 }
 
-#professor_container {
+#app {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-gap: 1.5rem;
@@ -94,7 +83,7 @@ main > h1 {
 
 .ajarn:hover {
   transform: scale(1.05);
-  border-color: #00aeff;
+  border-color: #ffd700;
   opacity: 1;
 }
 
