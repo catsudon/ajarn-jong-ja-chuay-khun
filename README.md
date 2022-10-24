@@ -2,7 +2,6 @@ flow ตอนนี้:
  เข้าเว็บ 1 ครั้ง จะมีอาจารย์มาให้กำลังใจ 1รอบ พร้อม bond+1
 
 todo:
-- อาจารย์มาถี่เกิน เปลี่ยนเงื่อนไขให้โผล่มาได้แค่ชั่วโมงละครั้ง
 - ทำหน้า choose your professor
 - random quote (based on bonding lv.)
 - เพิ่มsaturation ตามค่าbond
@@ -12,3 +11,4 @@ todo:
   - แสดงค่าbond
 - แก้ui
 - *ให้อาจารย์เตือนเวลาเข้าเว็บแปลกๆ*
+- remove every console.log()

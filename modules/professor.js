@@ -1,4 +1,4 @@
-const removeProfessor = () => {
+const removeProfessor = (now) => {
     const professor = document.getElementsByClassName('ajarn-jong-ja-chuay-khun');
     for (elm of professor) {
         if (elm) elm.remove();
@@ -6,6 +6,7 @@ const removeProfessor = () => {
     chrome.storage.sync.get('bond', (data) => {
         setBond(data.bond + 1);
     });
+    chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
 }
 
 const hideProfessor = () => {
@@ -23,6 +24,22 @@ const getQuote1 = () => {
 const getQuote2 = () => {
     n = Math.floor(Math.random() * quote2.length);
     return quote2[n]
+}
+
+const awakeProfessor = () => {
+    const now = new Date().getTime();
+    let callProfessor = true;
+    chrome.storage.sync.get("lastPopUp", function (result) {
+        let lastPopUp = result.lastPopUp;
+        console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
+        if (now - lastPopUp < 60*60*1000) {
+            callProfessor = false;
+        }
+        if(callProfessor) createProfessor();
+        else console.log("not waking prof")
+    });
+
+    
 }
 
 const createProfessor = (quote) => { 
@@ -61,7 +78,7 @@ const createProfessor = (quote) => {
 
     document.body.appendChild(container);
 
-    document.getElementsByClassName("ajarn-jong-ja-chuay-khun").onclick = hideProfessor;
+    // document.getElementsByClassName("ajarn-jong-ja-chuay-khun").onclick = hideProfessor;
     const timeOut = setTimeout(removeProfessor, 4569);
 }
 

@@ -12,5 +12,5 @@ chrome.runtime.onMessage.addListener(gotMsg);
 
 chrome.storage.sync.get("isNotBusy", function (professor) {
     let isNotBusy = professor.isNotBusy;
-    if(isNotBusy) createProfessor();
+    if(isNotBusy) awakeProfessor();
 });
