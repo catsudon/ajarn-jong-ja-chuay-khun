@@ -15,7 +15,12 @@ const getBond = () => {
 }
 
 chrome.runtime.onInstalled.addListener(() => {
-    setBond(0)
-    chrome.storage.sync.set({ isNotBusy: false });
+    setBond(0);
+    chrome.storage.sync.set({ isNotBusy: true });
 })
 
+// to toggle on/off
+// chrome.storage.sync.get("isNotBusy", function (result) {
+//     let isNotBusy = result.isNotBusy;
+//     chrome.storage.sync.set({ isNotBusy: !isNotBusy });
+// });
