@@ -1,4 +1,4 @@
-const removeProfessor = () => {
+const removeProfessor = (now) => {
     const professor = document.getElementsByClassName('ajarn-jong-ja-chuay-khun');
     for (elm of professor) {
         if (elm) elm.remove();
@@ -6,6 +6,7 @@ const removeProfessor = () => {
     chrome.storage.sync.get('bond', (data) => {
         setBond(data.bond + 1);
     });
+    
 }
 
 const hideProfessor = () => {
@@ -23,6 +24,25 @@ const getQuote1 = () => {
 const getQuote2 = () => {
     n = Math.floor(Math.random() * quote2.length);
     return quote2[n]
+}
+
+const awakeProfessor = () => {
+    const now = new Date().getTime();
+    let callProfessor = true;
+    chrome.storage.sync.get("lastPopUp", function (result) {
+        let lastPopUp = result.lastPopUp;
+        console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
+        if (now - lastPopUp < 3600000) callProfessor = false;
+        
+        if(callProfessor) {
+            chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
+            createProfessor();
+            setTimeout(removeProfessor, 4569);
+        }
+        else console.log("not waking prof")
+    });
+
+    
 }
 
 const createProfessor = (quote) => { 
@@ -44,7 +64,7 @@ const createProfessor = (quote) => {
     h1.classList.add("ajarn-jong-ja-chuay-khun");
 
     // change this to random
-    figure['src'] = professors[Math.floor(Math.random() * professors.length)]['imgUrl'];
+    figure['src'] = chrome.extension.getURL(professors[Math.floor(Math.random() * professors.length)]['imgPath']);
     figure.style['height'] = '269px';
     figure.classList.add("ajarn-jong-ja-chuay-khun");
 
@@ -61,7 +81,6 @@ const createProfessor = (quote) => {
 
     document.body.appendChild(container);
 
-    document.getElementsByClassName("ajarn-jong-ja-chuay-khun").onclick = hideProfessor;
-    const timeOut = setTimeout(removeProfessor, 4569);
+    // document.getElementsByClassName("ajarn-jong-ja-chuay-khun").onclick = hideProfessor;
 }
 
