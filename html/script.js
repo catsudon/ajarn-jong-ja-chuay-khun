@@ -1,10 +1,5 @@
 import { professors } from '../data/professorList.js'
 
-// const listProfessors = async () => {
-//     for (let i = 0; i <= professors.length; i++) {
-//         createProfessors(i)
-//     }
-// }
 const professor_container = document.getElementById('professor_container')
 
 const createProfessors = async () => {
@@ -33,8 +28,3 @@ ajarn.addEventListener("click", () => {
     alert(ajarn.querySelector(".aj-name").innerHTML);
 });
 });
-
-// for (let i of professors) {
-//     console.log(i.imgPath);
-// }
-
