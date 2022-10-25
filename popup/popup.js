@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const ajImg = this.documentElement.querySelector('.aj-pic');
     const bondingBar = document.querySelector('#bond');
     const bondingNum = document.querySelector('#progress');
+    const p = document.querySelector('.progress-label');
     chrome.storage.sync.get("professorId", (result) => {
         let professorId = result.professorId;
         ajImg.src = `/img/professors/${professorId}.jpg`;
@@ -15,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
             bondingBar.value = bond;
             bondingBar.content = bond+'/100';
             bondingNum.innerHTML = bond+'%';
+
+            if(bond >= 20) p.innerHTML+='❤️';
+            if(bond >= 60) p.innerHTML+='❤️';
         });
     })
 

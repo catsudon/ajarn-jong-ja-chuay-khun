@@ -22,9 +22,9 @@ const awakeProfessor = (professorId) => {
     chrome.storage.sync.get("lastPopUp", function (result) {
         let lastPopUp = result.lastPopUp;
         console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
-        if (now - lastPopUp < 3600000) callProfessor = false; // 3600000ms = 1 hour
+        if (now - lastPopUp < 3600000) console.log("not waking prof") // 3600000ms = 1 hour
         
-        if(callProfessor) {
+        else {
             chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
             chrome.storage.sync.get(professorId, (data) => {
                 let bond = data[professorId];
@@ -33,7 +33,7 @@ const awakeProfessor = (professorId) => {
             createProfessor(professorId);
             setTimeout(removeProfessor, 4569, professorId);
         }
-        else console.log("not waking prof")
+        
     });
 
     
