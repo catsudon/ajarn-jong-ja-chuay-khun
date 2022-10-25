@@ -1,53 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap');
-@import url('http://fonts.cdnfonts.com/css/games');
 
 img.aj-pic {
-    padding: 10px;
-    border-radius: 50%;
-    object-fit: cover;
-    width: 130px;
-    height: 130px;
-    margin-bottom: 0.5rem;
+	padding: 10px;
+	border-radius: 50%;
+	object-fit: cover;
+	width: 130px;
+	height: 130px;
+	margin-bottom: 0.5rem;
 }
 
 .ajarn {
-    width: 15rem auto;
-    background: #00000040;
-    box-shadow: 4px 4px 15px rgba(0,0,0,0.7);
-    color: #02111B;
-    padding-top: 1rem;
-    border-radius: 10px;
-    border: 3px outset #00000060;
-    font-size: 1.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    animation: card 1s ease-in-out;
-    opacity: 0.75;
+	width: 15rem auto;
+	background: #00000040;
+	box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.7);
+	color: #02111B;
+	padding-top: 1rem;
+	border-radius: 10px;
+	border: 3px outset #00000060;
+	font-size: 1.5rem;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+	animation: card 1s ease-in-out;
+	opacity: 0.75;
 }
 
 @keyframes card {
-    from {opacity: 0;top:8rem;}
-    to {opacity: 0.75;top:0rem;}
+	from {
+		opacity: 0;
+		top: 8rem;
+	}
+
+	to {
+		opacity: 0.75;
+		top: 0rem;
+	}
 }
 
 .ajarn:hover {
-    transform: scale(1.05);
-    border-color: #FFD700;
-    opacity: 1;
+	transform: scale(1.05);
+	border-color: #FFD700;
+	opacity: 1;
 }
 
 .aj-info {
-    background: rgba(255,255,255,0.3);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+	background: rgba(255, 255, 255, 0.3);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Dosis, Monospace, sans-serif;
+	font-family: Dosis, Monospace, sans-serif;
+}
+
+body {
+	min-width: 8em;
+}
+
+hr {
+	width: 100%;
+	border: 0;
+	height: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.3);
+	margin: 0.6em 0;
+}
+
+button {
+	width: 100%;
+	background-image: linear-gradient(#ededed, #ededed 38%, #dedede);
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+	outline: none;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08),
+		inset 0 1px 2px rgba(255, 255, 255, 0.75);
+	color: #444;
+	text-shadow: 0 1px 0 rgb(240, 240, 240);
+	font: inherit;
+	user-select: none;
+}
+
+.secondary {
+	font-size: 0.95em;
+	margin: 0.15em 0;
+}
+
+.hide {
+	display: none;
+}
+
+progress {
+    min-width: 100%;
 }
