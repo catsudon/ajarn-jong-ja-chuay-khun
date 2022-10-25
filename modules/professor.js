@@ -1,12 +1,8 @@
-const removeProfessor = (professorId) => {
+const removeProfessor = () => {
     const professor = document.getElementsByClassName('ajarn-jong-ja-chuay-khun');
     for (elm of professor) {
         if (elm) elm.remove();
     }
-    chrome.storage.sync.get(professorId, (data) => {
-        let bond = data[professorId];
-        setBond(professorId, bond + 1);
-    });
     
 }
 
@@ -30,6 +26,10 @@ const awakeProfessor = (professorId) => {
         
         if(callProfessor) {
             chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
+            chrome.storage.sync.get(professorId, (data) => {
+                let bond = data[professorId];
+                setBond(professorId, bond + 1);
+            });
             createProfessor(professorId);
             setTimeout(removeProfessor, 4569, professorId);
         }
