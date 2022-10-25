@@ -3,13 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" href="style.css">
     <title>settings</title>
 </head>
-
+<link rel="stylesheet" href="styles.css">
 <body>
-    <h1>settings</h1>
-    <button id="newprof">Click me</button>
+    
+    <div class="ajarn">
+        <img src="/img/professors/11.jpg" class="aj-pic">
+    </div>
+   
+    <div id="app">
+        <p class="progress-label">bonding <mark id="progress"> %</mark> ❤️</p>
+        <progress id="bond" value="" max="100"></progress>
+        <hr />
+        <button id="toggle">turn OFF</button>
+        <hr />
+        <button id="newprof">select new professor</button>
+    </div>
 
 </body>
 <script src="popup.js"></script>

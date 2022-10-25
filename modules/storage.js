@@ -1,17 +1,19 @@
-const setBond = (bonding) => {
-    chrome.storage.sync.set({ bond: bonding }, function () {
+const setBond = (professorId, bonding) => {
+    let obj = {};
+    obj[professorId] = bonding;
+    chrome.storage.sync.set(obj, function () {
         console.log('Value setted to ' + bonding);
         return "bond setted to " + bonding;
     });
 }
 
-const getBond = () => {
-    chrome.storage.sync.get("bond", function (result) {
-        let bond = result.bond;
-        console.log("returning " + result.bond);
-        return bond;
-    });
+const resetBond = () => {
+    let obj = {};
+    for(let i=0; i<=100; ++i) obj[i] = 0;
+    chrome.storage.sync.set(obj);
 }
+
+
 
 
 
