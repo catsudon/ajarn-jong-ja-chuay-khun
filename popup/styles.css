@@ -24,7 +24,6 @@ img.aj-pic {
 	cursor: pointer;
 	transition: 0.2s ease-in-out;
 	animation: card 1s ease-in-out;
-	opacity: 0.75;
 }
 
 @keyframes card {
@@ -42,7 +41,7 @@ img.aj-pic {
 .ajarn:hover {
 	transform: scale(1.05);
 	border-color: #FFD700;
-	opacity: 1;
+	opacity: 0.9;
 }
 
 .aj-info {
@@ -92,4 +91,10 @@ button {
 
 progress {
     min-width: 100%;
+    min-height: 30px;
+    margin-top: -19px;
 }
+  
+.progress-label {
+    position: relative;
+  }

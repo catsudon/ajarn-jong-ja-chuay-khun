@@ -1,6 +1,6 @@
 chrome.runtime.onInstalled.addListener((details) => {
     if (details.reason == "install") {
-        setBond(0);
+        resetBond();
         chrome.storage.sync.set({ professorId: -1 });
         chrome.storage.sync.set({ lastPopUp: 0 });
         chrome.storage.sync.set({ isNotBusy: true });

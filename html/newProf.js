@@ -65,7 +65,7 @@ for (ajarn of professors) {
         let ajarnId = container.id;
         chrome.storage.sync.set({ professorId: ajarnId });
         console.log(ajarnId)
-        alert(`Professor setted to PROF. ${ajarn['name']} .`)
+        alert('Professor selected.')
 
         chrome.tabs.getCurrent(function (tab) {
             chrome.tabs.remove(tab.id);

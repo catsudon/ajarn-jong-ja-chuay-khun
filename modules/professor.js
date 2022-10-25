@@ -1,10 +1,11 @@
-const removeProfessor = (now) => {
+const removeProfessor = (professorId) => {
     const professor = document.getElementsByClassName('ajarn-jong-ja-chuay-khun');
     for (elm of professor) {
         if (elm) elm.remove();
     }
-    chrome.storage.sync.get('bond', (data) => {
-        setBond(data.bond + 1);
+    chrome.storage.sync.get(professorId, (data) => {
+        let bond = data[professorId];
+        setBond(professorId, bond + 1);
     });
     
 }
@@ -32,12 +33,12 @@ const awakeProfessor = (professorId) => {
     chrome.storage.sync.get("lastPopUp", function (result) {
         let lastPopUp = result.lastPopUp;
         console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
-        if (now - lastPopUp < 3600000) callProfessor = false;
+        if (now - lastPopUp < 1) callProfessor = false; // 3600000
         
         if(callProfessor) {
             chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
             createProfessor(professorId);
-            setTimeout(removeProfessor, 4569);
+            setTimeout(removeProfessor, 4569, professorId);
         }
         else console.log("not waking prof")
     });

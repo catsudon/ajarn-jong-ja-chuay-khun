@@ -3,8 +3,7 @@
     "name": "ajarn-jong-ja-chuay-khun",
     "version": "0.2",
     "permissions": [
-        "storage",
-        "tabs"
+        "storage"
     ],
     "content_scripts": [
         {
