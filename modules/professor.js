@@ -26,7 +26,7 @@ const getQuote2 = () => {
     return quote2[n]
 }
 
-const awakeProfessor = () => {
+const awakeProfessor = (professorId) => {
     const now = new Date().getTime();
     let callProfessor = true;
     chrome.storage.sync.get("lastPopUp", function (result) {
@@ -36,7 +36,7 @@ const awakeProfessor = () => {
         
         if(callProfessor) {
             chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
-            createProfessor();
+            createProfessor(professorId);
             setTimeout(removeProfessor, 4569);
         }
         else console.log("not waking prof")
@@ -45,7 +45,7 @@ const awakeProfessor = () => {
     
 }
 
-const createProfessor = (quote) => { 
+const createProfessor = (professorId) => { 
     let container = document.createElement('div');
     let figure = document.createElement('img');
     let h1 = document.createElement('H1');
@@ -63,8 +63,8 @@ const createProfessor = (quote) => {
     h1.style['-webkit-text-stroke'] = '1px black';
     h1.classList.add("ajarn-jong-ja-chuay-khun");
 
-    // change this to random
-    figure['src'] = chrome.extension.getURL(professors[Math.floor(Math.random() * professors.length)]['imgPath']);
+    console.log(professorId)
+    figure['src'] = chrome.extension.getURL(professors[professorId]['imgPath']);
     figure.style['height'] = '269px';
     figure.classList.add("ajarn-jong-ja-chuay-khun");
 

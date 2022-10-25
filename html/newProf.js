@@ -37,14 +37,14 @@ let professors = [
 ]
 
 let app = document.getElementById("app");
-for(ajarn of professors) {
-    console.log(ajarn)
+for (ajarn of professors) {
+
     let container = document.createElement('div');
     let picDiv = document.createElement('div');
     let img = document.createElement('img');
     let ajInfo = document.createElement('div');
     let ajName = document.createElement('div');
-    
+
     img.src = ajarn['imgPath']
     img.alt = ajarn['name']
     container.classList.add("ajarn");
@@ -53,12 +53,24 @@ for(ajarn of professors) {
     ajInfo.classList.add("aj-info");
     ajName.classList.add("aj-name");
 
-    ajName.innerText = ajarn['name']
+    ajName.innerText = " PROF. " + ajarn['name']
 
     picDiv.appendChild(img)
     ajInfo.appendChild(ajName)
     container.appendChild(picDiv)
     container.appendChild(ajInfo)
-    
+
+    container.id = ajarn['id']
+    container.addEventListener("click", () => {
+        let ajarnId = container.id;
+        chrome.storage.sync.set({ professorId: ajarnId });
+        console.log(ajarnId)
+        alert(`Professor setted to PROF. ${ajarn['name']} .`)
+
+        chrome.tabs.getCurrent(function (tab) {
+            chrome.tabs.remove(tab.id);
+        });
+    });
+
     app.appendChild(container);
 }
