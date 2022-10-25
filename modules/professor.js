@@ -10,13 +10,6 @@ const removeProfessor = (professorId) => {
     
 }
 
-const hideProfessor = () => {
-    const professor = document.getElementsByClassName('ajarn-jong-ja-chuay-khun');
-    for (elm of professor) {
-        if (elm) elm.remove();
-    }
-}
-
 const getQuote1 = () => {
     n = Math.floor(Math.random() * quote1.length);
     return quote1[n]
@@ -33,7 +26,7 @@ const awakeProfessor = (professorId) => {
     chrome.storage.sync.get("lastPopUp", function (result) {
         let lastPopUp = result.lastPopUp;
         console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
-        if (now - lastPopUp < 1) callProfessor = false; // 3600000
+        if (now - lastPopUp < 1) callProfessor = false; // 3600000ms = 1 hour
         
         if(callProfessor) {
             chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
@@ -68,6 +61,10 @@ const createProfessor = (professorId) => {
     figure['src'] = chrome.extension.getURL(professors[professorId]['imgPath']);
     figure.style['height'] = '269px';
     figure.classList.add("ajarn-jong-ja-chuay-khun");
+    chrome.storage.sync.get(professorId, (data) => {
+        let bond = data[professorId];
+        figure.style['filter'] = `brightness(${100+3*Math.random()*bond}%)saturate(${100+3*Math.random()*bond}%)contrast(${100+3*Math.random()*bond}%)`
+    });
 
     container.style['position'] = 'fixed';
     container.style['top'] = '6%';
@@ -81,7 +78,5 @@ const createProfessor = (professorId) => {
     container.appendChild(h1);
 
     document.body.appendChild(container);
-
-    // document.getElementsByClassName("ajarn-jong-ja-chuay-khun").onclick = hideProfessor;
 }
 
