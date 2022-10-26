@@ -16,6 +16,11 @@ const getQuote2 = () => {
     return quote2[n]
 }
 
+const getQuote3 = () => {
+    n = Math.floor(Math.random() * quote3.length);
+    return quote3[n]
+}
+
 const awakeProfessor = (professorId) => {
     const now = new Date().getTime();
     let callProfessor = true;
@@ -44,7 +49,7 @@ const createProfessor = (professorId) => {
     let figure = document.createElement('img');
     let h1 = document.createElement('H1');
 
-    h1.innerText = getQuote2();
+    
     h1.style['position'] = 'absolute';
     h1.style['width'] = '90%';
     h1.style['top'] = '76.9%';
@@ -64,6 +69,9 @@ const createProfessor = (professorId) => {
     chrome.storage.sync.get(professorId, (data) => {
         let bond = data[professorId];
         figure.style['filter'] = `brightness(${100+3*Math.random()*bond}%)saturate(${100+3*Math.random()*bond}%)contrast(${100+3*Math.random()*bond}%)`
+        if(bond >= 70) h1.innerText = getQuote3();
+        else if(bond >= 40) h1.innerText = getQuote2();
+        else h1.innerText = getQuote1();
     });
 
     container.style['position'] = 'fixed';
