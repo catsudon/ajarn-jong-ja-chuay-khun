@@ -28,10 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.querySelector('#toggle');
     chrome.storage.sync.get("isNotBusy", (result) => {
         let isNotBusy = result.isNotBusy;
-        if(isNotBusy) toggleButton.innerHTML = "Turn OFF";
+        if(isNotBusy) {
+            toggleButton.innerHTML = "Turn OFF";
+            document.body.classList.add("sleep-mode");
+        }
         else {
             toggleButton.innerHTML = "Turn ON";
-            document.body.classList.add("sleep-mode");
+            document.body.classList.remove("sleep-mode");
         }
     });
 
@@ -42,11 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
             chrome.storage.sync.set({ isNotBusy: !isNotBusy }, () => {
                 if(!isNotBusy) {
                     toggleButton.innerHTML = "Turn OFF";
-                    document.body.classList.remove("sleep-mode");
+                    document.body.classList.add("sleep-mode");
                 }
                 else {
                     toggleButton.innerHTML = "Turn ON";
-                    document.body.classList.add("sleep-mode");
+                    document.body.classList.remove("sleep-mode");
                 }
             });
         });
