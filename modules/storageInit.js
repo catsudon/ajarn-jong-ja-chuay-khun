@@ -7,6 +7,6 @@ chrome.runtime.onInstalled.addListener((details) => {
         window.open(chrome.runtime.getURL("/html/newProf.html"));
     }
     else {
-        console.log("not install, aborting init.")
+        //console.log("not install, aborting init.")
     }
 });

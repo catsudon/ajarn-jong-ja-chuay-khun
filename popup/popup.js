@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#newprof").addEventListener("click", () => {
-        console.log("clicked newProf");
+        //console.log("clicked newProf");
         window.open(chrome.runtime.getURL("html/newProf.html"));
     });
 
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     toggleButton.addEventListener("click", () => {
-        console.log("clicked toggle");
+        //console.log("clicked toggle");
         chrome.storage.sync.get("isNotBusy", (result) => {
             let isNotBusy = result.isNotBusy;
             chrome.storage.sync.set({ isNotBusy: !isNotBusy }, () => {

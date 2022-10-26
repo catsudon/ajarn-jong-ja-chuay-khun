@@ -32,7 +32,7 @@
     },
     "browser_action": {
         "default_icon": "img/temporary_icon.png",
-        "default_title": "a popup will come here.",
+        "default_title": "menu",
         "default_popup": "popup/popup.html"
     },
     "web_accessible_resources": [

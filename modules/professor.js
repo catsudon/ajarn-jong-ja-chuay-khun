@@ -26,9 +26,10 @@ const awakeProfessor = (professorId) => {
     let callProfessor = true;
     chrome.storage.sync.get("lastPopUp", function (result) {
         let lastPopUp = result.lastPopUp;
-        console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
-        if (now - lastPopUp < 3600000) console.log("not waking prof") // 3600000ms = 1 hour
-        
+        //console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
+        if (now - lastPopUp < 3600000) {
+            //console.log("not waking prof") // 3600000ms = 1 hour
+        }
         else {
             chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
             chrome.storage.sync.get(professorId, (data) => {
@@ -62,7 +63,7 @@ const createProfessor = (professorId) => {
     h1.style['-webkit-text-stroke'] = '1px black';
     h1.classList.add("ajarn-jong-ja-chuay-khun");
 
-    console.log(professorId)
+    // console.log(professorId)
     figure['src'] = chrome.extension.getURL(professors[professorId]['imgPath']);
     figure.style['height'] = '269px';
     figure.classList.add("ajarn-jong-ja-chuay-khun");

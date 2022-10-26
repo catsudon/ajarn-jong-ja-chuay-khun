@@ -2,7 +2,7 @@ const setBond = (professorId, bonding) => {
     let obj = {};
     obj[professorId] = bonding;
     chrome.storage.sync.set(obj, function () {
-        console.log('Value setted to ' + bonding);
+        //console.log('Value setted to ' + bonding);
         return "bond setted to " + bonding;
     });
 }
