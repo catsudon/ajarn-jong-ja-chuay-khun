@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bondingNum.innerHTML = bond+'%';
 
             if(bond >= 20) p.innerHTML+='❤️';
-            if(bond >= 60) p.innerHTML+='❤️';
+            if(bond >= 40) p.innerHTML+='❤️';
         });
     })
 
@@ -29,7 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
     chrome.storage.sync.get("isNotBusy", (result) => {
         let isNotBusy = result.isNotBusy;
         if(isNotBusy) toggleButton.innerHTML = "Turn OFF";
-        else toggleButton.innerHTML = "Turn ON";
+        else {
+            toggleButton.innerHTML = "Turn ON";
+            document.body.classList.add("sleep-mode");
+        }
     });
 
     toggleButton.addEventListener("click", () => {
@@ -37,8 +40,14 @@ document.addEventListener("DOMContentLoaded", function () {
         chrome.storage.sync.get("isNotBusy", (result) => {
             let isNotBusy = result.isNotBusy;
             chrome.storage.sync.set({ isNotBusy: !isNotBusy }, () => {
-                if(!isNotBusy) toggleButton.innerHTML = "Turn OFF";
-                else toggleButton.innerHTML = "Turn ON";
+                if(!isNotBusy) {
+                    toggleButton.innerHTML = "Turn OFF";
+                    document.body.classList.remove("sleep-mode");
+                }
+                else {
+                    toggleButton.innerHTML = "Turn ON";
+                    document.body.classList.add("sleep-mode");
+                }
             });
         });
     });
