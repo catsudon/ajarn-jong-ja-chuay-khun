@@ -29,11 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
     chrome.storage.sync.get("isNotBusy", (result) => {
         let isNotBusy = result.isNotBusy;
         if(isNotBusy) {
-            toggleButton.innerHTML = "Turn OFF";
+            toggleButton.innerHTML = "ON";
             document.body.classList.add("sleep-mode");
         }
         else {
-            toggleButton.innerHTML = "Turn ON";
+            toggleButton.innerHTML = "OFF";
             document.body.classList.remove("sleep-mode");
         }
     });
@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
             let isNotBusy = result.isNotBusy;
             chrome.storage.sync.set({ isNotBusy: !isNotBusy }, () => {
                 if(!isNotBusy) {
-                    toggleButton.innerHTML = "Turn OFF";
+                    toggleButton.innerHTML = "ON";
                     document.body.classList.add("sleep-mode");
                 }
                 else {
-                    toggleButton.innerHTML = "Turn ON";
+                    toggleButton.innerHTML = "OFF";
                     document.body.classList.remove("sleep-mode");
                 }
             });
