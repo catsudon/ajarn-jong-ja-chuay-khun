@@ -36,7 +36,7 @@ const awakeProfessor = (professorId) => {
                 setBond(professorId, bond + 1);
             });
             createProfessor(professorId);
-            setTimeout(removeProfessor, 4569, professorId);
+            setTimeout(removeProfessor, 5569, professorId);
         }
         
     });
