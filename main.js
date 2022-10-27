@@ -1,5 +1,5 @@
 const gotMsg = (message, sender, sendResponse) => {
-    console.log("bond is " + message.bond);
+   // console.log("bond is " + message.bond);
 };
 
 chrome.runtime.onMessage.addListener(gotMsg);

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#newprof").addEventListener("click", () => {
-        console.log("clicked newProf");
+        //console.log("clicked newProf");
         window.open(chrome.runtime.getURL("html/newProf.html"));
     });
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bondingNum.innerHTML = bond+'%';
 
             if(bond >= 20) p.innerHTML+='❤️';
-            if(bond >= 60) p.innerHTML+='❤️';
+            if(bond >= 40) p.innerHTML+='❤️';
         });
     })
 
@@ -28,17 +28,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.querySelector('#toggle');
     chrome.storage.sync.get("isNotBusy", (result) => {
         let isNotBusy = result.isNotBusy;
-        if(isNotBusy) toggleButton.innerHTML = "Turn OFF";
-        else toggleButton.innerHTML = "Turn ON";
+        if(isNotBusy) {
+            toggleButton.innerHTML = "ON";
+            document.body.classList.add("sleep-mode");
+        }
+        else {
+            toggleButton.innerHTML = "OFF";
+            document.body.classList.remove("sleep-mode");
+        }
     });
 
     toggleButton.addEventListener("click", () => {
-        console.log("clicked toggle");
+        //console.log("clicked toggle");
         chrome.storage.sync.get("isNotBusy", (result) => {
             let isNotBusy = result.isNotBusy;
             chrome.storage.sync.set({ isNotBusy: !isNotBusy }, () => {
-                if(!isNotBusy) toggleButton.innerHTML = "Turn OFF";
-                else toggleButton.innerHTML = "Turn ON";
+                if(!isNotBusy) {
+                    toggleButton.innerHTML = "ON";
+                    document.body.classList.add("sleep-mode");
+                }
+                else {
+                    toggleButton.innerHTML = "OFF";
+                    document.body.classList.remove("sleep-mode");
+                }
             });
         });
     });

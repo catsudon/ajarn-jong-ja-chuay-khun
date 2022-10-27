@@ -64,7 +64,7 @@ for (ajarn of professors) {
     container.addEventListener("click", () => {
         let ajarnId = container.id;
         chrome.storage.sync.set({ professorId: ajarnId });
-        console.log(ajarnId)
+       // console.log(ajarnId)
         alert('Professor selected.')
 
         chrome.tabs.getCurrent(function (tab) {

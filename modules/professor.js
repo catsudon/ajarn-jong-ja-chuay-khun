@@ -16,14 +16,20 @@ const getQuote2 = () => {
     return quote2[n]
 }
 
+const getQuote3 = () => {
+    n = Math.floor(Math.random() * quote3.length);
+    return quote3[n]
+}
+
 const awakeProfessor = (professorId) => {
     const now = new Date().getTime();
     let callProfessor = true;
     chrome.storage.sync.get("lastPopUp", function (result) {
         let lastPopUp = result.lastPopUp;
-        console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
-        if (now - lastPopUp < 3600000) console.log("not waking prof") // 3600000ms = 1 hour
-        
+        //console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
+        if (now - lastPopUp < 3600000) {
+            //console.log("not waking prof") // 3600000ms = 1 hour
+        }
         else {
             chrome.storage.sync.set({ lastPopUp: new Date().getTime() });
             chrome.storage.sync.get(professorId, (data) => {
@@ -31,7 +37,7 @@ const awakeProfessor = (professorId) => {
                 setBond(professorId, bond + 1);
             });
             createProfessor(professorId);
-            setTimeout(removeProfessor, 4569, professorId);
+            setTimeout(removeProfessor, 5569, professorId);
         }
         
     });
@@ -44,7 +50,7 @@ const createProfessor = (professorId) => {
     let figure = document.createElement('img');
     let h1 = document.createElement('H1');
 
-    h1.innerText = getQuote2();
+    
     h1.style['position'] = 'absolute';
     h1.style['width'] = '90%';
     h1.style['top'] = '76.9%';
@@ -57,13 +63,16 @@ const createProfessor = (professorId) => {
     h1.style['-webkit-text-stroke'] = '1px black';
     h1.classList.add("ajarn-jong-ja-chuay-khun");
 
-    console.log(professorId)
+    // console.log(professorId)
     figure['src'] = chrome.extension.getURL(professors[professorId]['imgPath']);
     figure.style['height'] = '269px';
     figure.classList.add("ajarn-jong-ja-chuay-khun");
     chrome.storage.sync.get(professorId, (data) => {
         let bond = data[professorId];
         figure.style['filter'] = `brightness(${100+3*Math.random()*bond}%)saturate(${100+3*Math.random()*bond}%)contrast(${100+3*Math.random()*bond}%)`
+        if(bond >= 70) h1.innerText = getQuote3();
+        else if(bond >= 40) h1.innerText = getQuote2();
+        else h1.innerText = getQuote1();
     });
 
     container.style['position'] = 'fixed';
