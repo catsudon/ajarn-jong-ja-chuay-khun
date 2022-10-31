@@ -27,7 +27,7 @@ const awakeProfessor = (professorId) => {
     chrome.storage.sync.get("lastPopUp", function (result) {
         let lastPopUp = result.lastPopUp;
         //console.log("got " + result.lastPopUp+ " diff =  " + String(now-lastPopUp));
-        if (now - lastPopUp < 3600000) {
+        if (now - lastPopUp < 1) {
             //console.log("not waking prof") // 3600000ms = 1 hour
         }
         else {

@@ -1,2 +1,9 @@
-TODO:
-- remove every console.log()
+<img src="img/slide/1">
+<img src="img/slide/2">
+<img src="img/slide/3">
+<img src="img/slide/4">
+<img src="img/slide/5">
+<img src="img/slide/6">
+<img src="img/slide/7">
+<img src="img/slide/8">
+<img src="img/slide/9">
